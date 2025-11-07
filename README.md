@@ -6,7 +6,7 @@
 
 ## 🎯 À propos du projet
 
-Ce dépôt contient le projet développé par l'**Équipe 10** lors du hackathon IBM x DeVinci **"Finance Track"** organisé du **5 au 7 novembre 2025** aux **Terrasses Campus**. 156 étudiants de 4e année DIA (Data Intelligence & AI) ont participé à cet événement intensif de 3 jours, répartis en 26 équipes de 6 personnes.
+Ce dépôt contient le projet développé par l'**Équipe 10** lors du hackathon IBM x DeVinci **"Finance Track"** organisé du **5 au 7 novembre 2025** aux **Terrasses Campus**. 156 étudiants de 5e année DIA (Data Intelligence & AI) ont participé à cet événement intensif de 3 jours, répartis en 26 équipes de 6 personnes.
 
 ### 🎓 Équipe 10 - Finance Track
 
@@ -15,6 +15,7 @@ Ce dépôt contient le projet développé par l'**Équipe 10** lors du hackathon
 - **Thomas Valesi** - Data Science & IA
 - **Chloé De Wilde** - Data Science & IA
 - **Nour Affes** - Data Science & IA
+- **Romain Paupe** - Data Science & IA
 
 ## 📋 Contexte & Objectif
 
@@ -127,13 +128,11 @@ Les trois éléments clés du défi :
 
 ### 1. Repository GitHub
 ✅ Code source complet et documenté  
-✅ Notebooks Jupyter avec explications  
-✅ Scripts de preprocessing et modélisation  
+✅ Notebooks Jupyter avec explications   
 ✅ Fichier de prédictions généré  
-✅ Fichier requirements.txt pour reproductibilité
 
 ### 2. Pitch Deck (PDF)
-✅ Maximum 10 slides  
+✅ Maximum 15 slides  
 ✅ Présentation du défi et contexte business  
 ✅ Approche techniques et méthodologie  
 ✅ Résultats et performance du modèle  
@@ -175,10 +174,6 @@ Avant le hackathon, tous les participants ont complété :
 - **IBM watsonx: Technical Essentials** (Certification officielle)
 - **Getting Started with Generative AI** (Certification officielle)
 
-Optionnel (bonus) :
-- IBM watsonx.data Technical Essentials
-- Generative AI in Action
-
 ## 🚀 Installation et Utilisation
 
 ### Prérequis
@@ -187,45 +182,6 @@ Optionnel (bonus) :
 python >= 3.8
 pip
 jupyter notebook
-```
-
-### Installation
-
-```bash
-# Cloner le repository
-git clone https://github.com/Antoine-92/hackathon_IBM_DIA.git
-
-# Naviguer dans le dossier
-cd hackathon_IBM_DIA
-
-# Créer un environnement virtuel
-python -m venv venv
-source venv/bin/activate  # Sur Windows: venv\Scripts\activate
-
-# Installer les dépendances
-pip install -r requirements.txt
-```
-
-### Lancement des Notebooks
-
-```bash
-# Démarrer Jupyter
-jupyter notebook
-
-# Ouvrir les notebooks dans l'ordre:
-# 1. 01_exploratory_data_analysis.ipynb
-# 2. 02_feature_engineering.ipynb
-# 3. 03_model_training.ipynb
-# 4. 04_evaluation_predictions.ipynb
-```
-
-### Utilisation du Dashboard
-
-```bash
-# Lancer le dashboard Dash
-python dashboard/fraud_dashboard.py
-
-# Accéder à: http://localhost:8050
 ```
 
 ## 📝 Timeline du Hackathon
@@ -270,3 +226,4 @@ Ce projet a été développé dans le cadre du hackathon IBM x DeVinci 2025. Les
 ### Remerciements
 
 Merci à **IBM**, **DeVinci**, **Kryptosphère** et tous les mentors pour cette opportunité exceptionnelle d'apprendre et d'innover sur une problématique réelle de fraude bancaire.
+
