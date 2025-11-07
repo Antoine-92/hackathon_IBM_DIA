@@ -1,14 +1,14 @@
-# Hackathon IBM x ESILV - Code the Future: Industry x AI 🚀
+# IBM x DeVinci Hackathon 2025 - Fraud Detection Track 🏦
 
 [![IBM watsonx](https://img.shields.io/badge/IBM-watsonx.ai-blue)](https://www.ibm.com/watsonx)
 [![Python](https://img.shields.io/badge/Python-3.x-green)](https://www.python.org/)
-[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)](https://jupyter.org/)
+[![Machine Learning](https://img.shields.io/badge/ML-Classification-orange)](https://scikit-learn.org/)
 
 ## 🎯 À propos du projet
 
-Ce dépôt contient le projet développé par l'**Équipe 10** lors du hackathon académique IBM x ESILV organisé en septembre 2025. Plus de 1 000 étudiants de 4e année du cycle ingénieur ont participé à cet événement visant à appliquer l'intelligence artificielle et le machine learning à des cas d'usage industriels concrets.
+Ce dépôt contient le projet développé par l'**Équipe 10** lors du hackathon IBM x DeVinci **"Finance Track"** organisé du **5 au 7 novembre 2025** aux **Terrasses Campus**. 156 étudiants de 4e année DIA (Data Intelligence & AI) ont participé à cet événement intensif de 3 jours, répartis en 26 équipes de 6 personnes.
 
-### 🎓 Équipe 10
+### 🎓 Équipe 10 - Finance Track
 
 - **Antoine Richard** - Data Science & IA
 - **Charles Perier** - Data Science & IA
@@ -16,99 +16,176 @@ Ce dépôt contient le projet développé par l'**Équipe 10** lors du hackathon
 - **Chloé De Wilde** - Data Science & IA
 - **Nour Affes** - Data Science & IA
 
-## 📚 Contexte du hackathon
+## 📋 Contexte & Objectif
 
-Le hackathon **"Code the Future: Industry x AI"** s'inscrivait dans un dispositif académique conçu avec IBM, combinant :
+### Le Défi
 
-- Formation certifiante sur la plateforme **IBM SkillsBuild**
-- Apprentissage pratique avec **IBM watsonx.ai**
-- Projet collaboratif en binômes/équipes
+Les institutions financières font face à des tentatives de fraude de plus en plus sophistiquées sur les cartes bancaires et les paiements en ligne. La détection rapide et précise de ces fraudes est critique pour protéger les clients et maintenir la confiance.
 
-### 🎓 Formation préalable
+### L'Objectif du Track Finance
 
-Avant le hackathon, les participants ont suivi trois modules certifiants :
+Développer un **modèle de Machine Learning de classification** capable de prédire si une transaction est frauduleuse (1) ou non (0).
 
-1. **Data Fundamentals** - Bases de la data science, manipulation et visualisation de données
-2. **Getting Started with AI** - Introduction aux concepts clés de l'IA et de l'IA générative
-3. **Explore Machine Learning and Data Science in IBM watsonx** - Application des outils de ML sur watsonx
+Les trois éléments clés du défi :
 
-Les certifications obtenues sont reconnues internationalement via des badges **Credly**.
+1. **Concevoir et entraîner** un modèle ML performant capable de généraliser à de nouveaux clients
+2. **Générer un fichier de soumission** au format requis contenant `transaction_id` et `fraud_prediction` pour l'ensemble d'évaluation
+3. **Créer un dashboard visuel** pour visualiser les résultats et insights
 
-## 🏭 Cas d'usage industriel
+### 🎯 Défis Techniques
 
-### Problématique
+- **Classe déséquilibrée** : les fraudes sont très minoritaires dans les données
+- **Données manquantes** : gestion appropriée des valeurs manquantes
+- **Validation temporelle** : respect de l'ordre chronologique (données de 2016–2018)
+- **Généralisation à de nouveaux clients** : contrainte majeure du dataset
+  - Les clients frauduleux du set d'entraînement sont **différents** de ceux du set d'évaluation (cold start)
+  - Le modèle doit généraliser à des patterns de fraude sur des clients jamais vus
 
-Prédire la **qualité d'une chaîne de fabrication de disques durs** grâce à des données issues de capteurs en temps réel, afin d'anticiper les baisses de performance de production (OEE - Overall Equipment Effectiveness) et proposer des solutions d'optimisation.
+## 📊 Dataset
 
-### Objectifs
+### Volume et Format
 
-- Analyser et préparer des données issues de capteurs industriels
-- Construire des modèles prédictifs de qualité
-- Déployer et tester les modèles sur de nouvelles données
-- Proposer des recommandations pour optimiser la production
+- **Nombre de transactions** : ~210,000 transactions (années 2016–2018)
+- **Format** : CSV
+- **Source** : `hackathon_data.zip`
 
-## 🛠️ Technologies utilisées
+### Fichiers Fournis
 
-- **IBM watsonx.ai** - Plateforme cloud IA et ML d'entreprise
-- **AutoAI** - Automatisation du choix des algorithmes et du réglage des hyperparamètres
-- **Python** - Langage de programmation principal
-- **Jupyter Notebook** - Environnement de développement interactif
-- **Machine Learning** - Algorithmes de prédiction et d'optimisation
+| Fichier | Description | Utilisation |
+|---------|-------------|------------|
+| `transactions_train.csv` | Transactions d'entraînement avec features | Entraînement |
+| `train_fraud_labels.json` | Labels (fraude/non-fraude) | Entraînement |
+| `cards_data.csv` | Informations sur les cartes bancaires | Feature engineering |
+| `users_data.csv` | Données de profil utilisateur | Feature engineering |
+| `mcc_codes.json` | Codes MCC (catégories marchands) | Enrichissement données |
+| `evaluation_features.csv` | Transactions d'évaluation (pas de labels) | **Prédiction uniquement** ⚠️ |
 
-## 🚀 Structure du projet
+### Description des Données
 
-```
-hackathon_IBM_DIA/
-│
-├── notebooks/          # Jupyter notebooks d'analyse et de modélisation
-├── data/              # Données de capteurs (si applicable)
-├── models/            # Modèles entraînés et sauvegardés
-├── src/               # Code source Python
-└── README.md          # Documentation du projet
-```
+- **Variables transactionnelles** : montants, dates, marchands (via codes MCC), etc.
+- **Enrichissement** : données de cartes et profils utilisateurs
+- **Étiquettes** : fournies séparément au format JSON
 
-## 📊 Méthodologie
+**⚠️ Contrainte importante** : `evaluation_features.csv` ne doit **jamais** être utilisé pour l'entraînement, uniquement pour les prédictions finales.
 
-Notre approche a suivi le cycle complet d'un projet de machine learning :
+## 🛠️ Technologies & Stack
 
-1. **Exploration des données** - Analyse exploratoire et visualisation des données capteurs
-2. **Feature Engineering** - Création et sélection de variables pertinentes
-3. **Modélisation** - Entraînement de modèles prédictifs avec watsonx AutoAI
-4. **Évaluation** - Tests de performance et validation des modèles
-5. **Déploiement** - Mise en production et tests sur nouvelles données
-6. **Restitution** - Présentation des résultats et recommandations
+- **IBM watsonx.ai** - Plateforme cloud IA d'IBM
+- **Python 3.x** - Langage principal de développement
+- **Scikit-learn** - Algorithmes de ML (Random Forest, XGBoost, etc.)
+- **Pandas & NumPy** - Manipulation et analyse de données
+- **Matplotlib & Seaborn** - Visualisations statistiques
+- **Plotly / Dash** - Dashboard interactif
+- **Jupyter Notebook** - Environnement de développement
 
-## 🎯 Résultats
+## 🚀 Méthodologie
 
-*[À compléter avec vos résultats spécifiques]*
+### 1. **Exploration des Données (EDA)**
+- Analyse des distributions, déséquilibre des classes
+- Identification des patterns de fraude
+- Analyse des corrélations et features importantes
+- Visualisation des transactions saines vs frauduleuses
 
-- Performance du modèle : *[métriques]*
-- Insights principaux : *[découvertes clés]*
-- Recommandations : *[suggestions d'optimisation]*
+### 2. **Feature Engineering**
+- Création de features temporelles (jour, heure, jour de la semaine)
+- Agrégations par utilisateur et carte (fréquence, montant moyen, etc.)
+- Intégration des données de marchands (MCC)
+- Encoding des variables catégoriques
+- Normalisation et mise à l'échelle
 
-## 🏆 Récompenses et reconnaissance
+### 3. **Gestion du Déséquilibre**
+- Techniques : SMOTE, classe_weight, stratification
+- Choix de la métrique appropriée (AUC-ROC plutôt que accuracy)
 
-Les meilleurs projets du hackathon ont bénéficié d'une immersion exclusive à l'**IBM Innovation Studio**, comprenant :
+### 4. **Entraînement des Modèles**
+- Test de plusieurs algorithmes :
+  - Logistic Regression (baseline)
+  - Random Forest
+  - XGBoost / LightGBM
+  - Ensemble methods
+- Validation croisée respectant l'ordre chronologique
+- Hyperparameter tuning avec Grid/Random Search
 
-- Découverte de cas clients concrets utilisant l'IA d'IBM
-- Visite d'une salle immersive dédiée aux nouvelles technologies
-- Introduction au calcul quantique
-- Échanges avec les experts IBM
+### 5. **Évaluation & Validation Temporelle**
+- Évaluation sur des données holdout (après chronologiquement)
+- Métriques : Precision, Recall, F1-score, AUC-ROC
+- Analyse de la robustesse sur nouveaux clients
 
-## 💡 Compétences développées
+### 6. **Prédictions & Soumission**
+- Génération des prédictions sur le set d'évaluation
+- Formatage au format requis : `transaction_id`, `fraud_prediction`
+- Création du fichier CSV de soumission
 
-- Utilisation d'une plateforme cloud IA d'entreprise
-- Application du machine learning à des problématiques industrielles
-- Travail collaboratif en mode agile
-- Présentation de résultats techniques à des experts
-- Feature engineering et optimisation de modèles
+### 7. **Dashboard & Visualisation**
+- Dashboard interactif présentant :
+  - Performance du modèle (matrices de confusion, courbes ROC)
+  - Analyse des fraudes détectées
+  - Insights et patterns importants
+  - Recommandations business
 
-## 📝 Installation et utilisation
+## 📊 Livrables Obligatoires
+
+### 1. Repository GitHub
+✅ Code source complet et documenté  
+✅ Notebooks Jupyter avec explications  
+✅ Scripts de preprocessing et modélisation  
+✅ Fichier de prédictions généré  
+✅ Fichier requirements.txt pour reproductibilité
+
+### 2. Pitch Deck (PDF)
+✅ Maximum 10 slides  
+✅ Présentation du défi et contexte business  
+✅ Approche techniques et méthodologie  
+✅ Résultats et performance du modèle  
+✅ Impact business et recommandations
+
+### 3. Vidéo de Démo (MP4)
+✅ Maximum 5 minutes  
+✅ Sans son  
+✅ Démonstration du dashboard  
+✅ Présentation des insights clés  
+✅ Aperçu de l'interface utilisateur
+
+## 🏆 Critères d'Évaluation
+
+La jury évaluera les projets sur :
+
+- **Qualité du pitch** - Clarté et pertinence de la présentation
+- **Pertinence business** - Compréhension du contexte et de l'impact
+- **Implémentation technique** - Qualité du code et des modèles
+- **Travail d'équipe** - Collaboration et répartition des tâches
+
+## 👥 Encadrement & Support
+
+### Expert du Track Finance
+- **Nom** : Mehdi Boulaymen
+- **Position** : AI Engineer, IBM
+- **Email** : Mehdi.Boulaymen@ibm.com
+
+### Support Technique
+- Accès à la salle **Expert Room** (Zoom) pour les questions techniques
+- Mentors IBM watsonx pour support installations et configurations
+- Coaches Kryptosphère pour questions méthodologiques
+- **Limite** : 15 minutes par team et par session
+
+## 📚 Formation Watsonx Obligatoire
+
+Avant le hackathon, tous les participants ont complété :
+
+- **IBM watsonx: Technical Essentials** (Certification officielle)
+- **Getting Started with Generative AI** (Certification officielle)
+
+Optionnel (bonus) :
+- IBM watsonx.data Technical Essentials
+- Generative AI in Action
+
+## 🚀 Installation et Utilisation
 
 ### Prérequis
 
 ```bash
 python >= 3.8
+pip
 jupyter notebook
 ```
 
@@ -118,43 +195,78 @@ jupyter notebook
 # Cloner le repository
 git clone https://github.com/Antoine-92/hackathon_IBM_DIA.git
 
-# Se déplacer dans le dossier
+# Naviguer dans le dossier
 cd hackathon_IBM_DIA
 
-# Installer les dépendances (si requirements.txt existe)
+# Créer un environnement virtuel
+python -m venv venv
+source venv/bin/activate  # Sur Windows: venv\Scripts\activate
+
+# Installer les dépendances
 pip install -r requirements.txt
 ```
 
-### Lancement
+### Lancement des Notebooks
 
 ```bash
-# Démarrer Jupyter Notebook
+# Démarrer Jupyter
 jupyter notebook
+
+# Ouvrir les notebooks dans l'ordre:
+# 1. 01_exploratory_data_analysis.ipynb
+# 2. 02_feature_engineering.ipynb
+# 3. 03_model_training.ipynb
+# 4. 04_evaluation_predictions.ipynb
 ```
 
-## 🤝 Encadrement
+### Utilisation du Dashboard
 
-Ce hackathon a été encadré par :
+```bash
+# Lancer le dashboard Dash
+python dashboard/fraud_dashboard.py
 
-- **Nedra Mellouli** - Responsable de la majeure Data & IA, ESILV
-- **Armelle Baumard** - Responsable relations grandes écoles et universités, IBM France
-- **Mehdi Boulaymen** - AI Engineer, EMEA watsonx Team, IBM
-- **Elsa Charpentier** - AI Engineer, Client Engineering, IBM France
-- Équipe internationale de mentors IBM (France et Inde)
+# Accéder à: http://localhost:8050
+```
 
-## 📧 Contact
+## 📝 Timeline du Hackathon
 
-Pour toute question concernant ce projet :
+| Date | Jour | Heure | Activité |
+|------|------|-------|----------|
+| 5 nov | Mercredi | 9:00-9:30 | Introduction Kryptosphère |
+| | | 9:30-10:00 | Présentations partenaires & use cases |
+| | | 10:00-11:00 | Brainstorming équipes |
+| | | 11:00-12:00 | Formation avancée Watsonx |
+| | | 13:30-18:00 | Kickoff officiel - Développement |
+| 6 nov | Jeudi | 8:15-18:00 | Développement intensif |
+| 7 nov | Vendredi | 8:15-11:00 | Finalisation des livrables |
+| | | 13:30-16:00 | Présentations devant le jury |
+| | | | **Deadline soumission : 11:00** ⏰ |
 
-- 📧 Email : kryptosphere@devinci.fr
-- 🏫 ESILV - École Supérieure d'Ingénieurs Léonard de Vinci
+## 💡 Ressources Utiles
 
-## 📄 Licence
+- [IBM watsonx Documentation](https://www.ibm.com/watsonx)
+- [Scikit-learn ML Algorithms](https://scikit-learn.org/)
+- [Pandas Data Manipulation](https://pandas.pydata.org/)
+- [Plotly Dashboards](https://plotly.com/)
 
-Ce projet a été développé dans le cadre d'un hackathon académique ESILV x IBM.
+## 🤝 Contact & Support
+
+**Questions générales** : kryptosphere@devinci.fr  
+**Questions du track Finance** : Mehdi.Boulaymen@ibm.com  
+**Discord Server** : [Accès via lien partagé]
+
+## 📄 Licence & Confidentialité
+
+Ce projet a été développé dans le cadre du hackathon IBM x DeVinci 2025. Les données fournies sont à usage exclusif pour cette compétition.
 
 ---
 
-*Développé avec passion lors du hackathon IBM x ESILV - Septembre 2025* ⚡
+*Équipe 10 | Track Finance | IBM x DeVinci Hackathon 2025*
 
-**#DataScience #MachineLearning #IBMwatsonx #ESILV #Hackathon #AI #Industry40**
+**Innovate. Code. Win.** 🚀
+
+---
+
+### Remerciements
+
+Merci à **IBM**, **DeVinci**, **Kryptosphère** et tous les mentors pour cette opportunité exceptionnelle d'apprendre et d'innover sur une problématique réelle de fraude bancaire.
