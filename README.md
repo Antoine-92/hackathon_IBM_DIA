@@ -94,17 +94,16 @@ Les trois éléments clés du défi :
 - Normalisation et mise à l'échelle
 
 ### 3. **Gestion du Déséquilibre**
-- Techniques : SMOTE, classe_weight, stratification
-- Choix de la métrique appropriée (AUC-ROC plutôt que accuracy)
+- Techniques : SMOTE, Imbalance, SMOTETomek
+- Choix de la métrique appropriée (Recall & AUC-ROC plutôt que accuracy)
 
 ### 4. **Entraînement des Modèles**
 - Test de plusieurs algorithmes :
   - Logistic Regression (baseline)
+  - Decision Tree
   - Random Forest
-  - XGBoost / LightGBM
-  - Ensemble methods
-- Validation croisée respectant l'ordre chronologique
-- Hyperparameter tuning avec Grid/Random Search
+  - XGBoost
+  - LightGBM
 
 ### 5. **Évaluation & Validation Temporelle**
 - Évaluation sur des données holdout (après chronologiquement)
@@ -115,13 +114,6 @@ Les trois éléments clés du défi :
 - Génération des prédictions sur le set d'évaluation
 - Formatage au format requis : `transaction_id`, `fraud_prediction`
 - Création du fichier CSV de soumission
-
-### 7. **Dashboard & Visualisation**
-- Dashboard interactif présentant :
-  - Performance du modèle (matrices de confusion, courbes ROC)
-  - Analyse des fraudes détectées
-  - Insights et patterns importants
-  - Recommandations business
 
 ## 📊 Livrables Obligatoires
 
@@ -202,7 +194,6 @@ jupyter notebook
 - [IBM watsonx Documentation](https://www.ibm.com/watsonx)
 - [Scikit-learn ML Algorithms](https://scikit-learn.org/)
 - [Pandas Data Manipulation](https://pandas.pydata.org/)
-- [Plotly Dashboards](https://plotly.com/)
 
 ## 🤝 Contact & Support
 
@@ -225,5 +216,6 @@ Ce projet a été développé dans le cadre du hackathon IBM x DeVinci 2025. Les
 ### Remerciements
 
 Merci à **IBM**, **DeVinci**, **Kryptosphère** et tous les mentors pour cette opportunité exceptionnelle d'apprendre et d'innover sur une problématique réelle de fraude bancaire.
+
 
 
