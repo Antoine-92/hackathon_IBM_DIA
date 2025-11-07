@@ -76,7 +76,6 @@ Les trois éléments clés du défi :
 - **Scikit-learn** - Algorithmes de ML (Random Forest, XGBoost, etc.)
 - **Pandas & NumPy** - Manipulation et analyse de données
 - **Matplotlib & Seaborn** - Visualisations statistiques
-- **Plotly / Dash** - Dashboard interactif
 - **Jupyter Notebook** - Environnement de développement
 
 ## 🚀 Méthodologie
@@ -226,4 +225,5 @@ Ce projet a été développé dans le cadre du hackathon IBM x DeVinci 2025. Les
 ### Remerciements
 
 Merci à **IBM**, **DeVinci**, **Kryptosphère** et tous les mentors pour cette opportunité exceptionnelle d'apprendre et d'innover sur une problématique réelle de fraude bancaire.
+
 
